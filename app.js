@@ -29,6 +29,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.post('/saludo', function (req, res) {
+  var nombre = req.body.nombre || '';
+  var saludo = '';
+
+  if (nombre != '') {
+    saludo = 'Bienvenido ' + nombre;
+  }
+
+  res.send(saludo);
+});
+
+app.get('/saludo', function (req, res) {
+  var nombre = req.query.nombre || '';
+
+  res.render('index', {
+    title: 'Practicas de Node.js con Express',
+    nombre: nombre
+  });
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

@@ -1,2 +1,16 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>
+  {{title}}
+</h1>
+{{#if nombre}}
+  <p>
+    Bienvenido {{nombre}}
+  </p>
+{{/if}}
+
+<form action='/saludo' method='post'>
+  <label for='nombre'>
+    Ingrese su nombre
+  </label>
+  <input type='text' name='nombre' />
+  <input type='submit' value='Enviar' />
+</form>
